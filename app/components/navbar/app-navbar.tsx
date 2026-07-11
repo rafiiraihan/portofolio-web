@@ -40,11 +40,11 @@ function getOrCreatePresenceSessionKey(): string {
     }
 }
 
-function countPresenceMetas(state: Record<string, unknown>): number {
+function countPresenceMetas(state: Record<string, any>): number {
     let n = 0;
-    for (const metas of Object.values(state)) {
-        if (Array.isArray(metas)) {
-            n += metas.length;
+    for (const value of Object.values(state)) {
+        if (value && Array.isArray(value.metas)) {
+            n += value.metas.length;
         }
     }
     return n;
